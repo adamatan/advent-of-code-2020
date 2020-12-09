@@ -1,6 +1,7 @@
+from utils.utils import get_input_rows
+
 with open('01-input.txt') as f:
-    expenses = sorted([int(s) for s in f.readlines()])
-print(expenses)
+    expenses = [int(s) for s in f.readlines()]
 
 for i in expenses:
     for j in expenses:
