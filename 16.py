@@ -57,7 +57,4 @@ def part_1(filename):
 
 if __name__ == '__main__':
     filename = sys.argv[1] if len(sys.argv) > 1 else '16.txt'
-    print(filename)
     print(part_1(filename))
-
-        
