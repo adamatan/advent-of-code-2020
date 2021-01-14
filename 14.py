@@ -1,5 +1,6 @@
-import fileinput
 import re
+import sys
+import fileinput
 
 def parse_mask(mask):
     zero_mask = ''.join(['0' if c == '0' else '1' for c in mask])
@@ -11,12 +12,12 @@ def apply_mask(mask, number):
 
 mem = {}
 
-def day_1():
+def day_1(filename):
     '''
-    >>> day_1()
+    >>> day_1('14.txt')
     9296748256641
     '''
-    with fileinput.input('14.txt') as f:
+    with fileinput.input(filename) as f:
         for line in f:
             if 'mask' in line:
                 mask = parse_mask(line.split('=')[1].strip())
@@ -27,4 +28,5 @@ def day_1():
     return sum(mem.values())
 
 if __name__ == '__main__':
-    print(day_1())
+    filename = sys.argv[1] if len(sys.argv) > 1 else '14.txt'
+    print(day_1(filename))
