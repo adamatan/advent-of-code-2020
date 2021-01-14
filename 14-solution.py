@@ -11,13 +11,20 @@ def apply_mask(mask, number):
 
 mem = {}
 
-with fileinput.input() as f:
-    for line in f:
-        if 'mask' in line:
-            mask = parse_mask(line.split('=')[1].strip())
-        else:
-            address, number = re.findall(r'mem\[(\d+)\]\s+\=\s+(\d+)', line)[0]
-            address, number = int(address), int(number)
-            mem[address] = apply_mask(mask, number)
+def day_1():
+    '''
+    >>> day_1()
+    9296748256641
+    '''
+    with fileinput.input('14.txt') as f:
+        for line in f:
+            if 'mask' in line:
+                mask = parse_mask(line.split('=')[1].strip())
+            else:
+                address, number = re.findall(r'mem\[(\d+)\]\s+\=\s+(\d+)', line)[0]
+                address, number = int(address), int(number)
+                mem[address] = apply_mask(mask, number)
+    return sum(mem.values())
 
-print(sum(mem.values()))
+if __name__ == '__main__':
+    print(day_1())
