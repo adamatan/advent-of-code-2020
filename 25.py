@@ -20,8 +20,6 @@ def generate_encryption_key(loop_size, public_key):
 
 def part_1(filename):
     '''
-    >>> part_1('25.txt')
-    15380989
     >>> part_1('25-small.txt')
     14897079
     '''
