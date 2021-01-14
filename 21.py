@@ -9,6 +9,8 @@ def part_1(filename):
     '''
     >>> part_1('21.txt')
     2061
+    >>> part_1('21-small.txt')
+    5
     '''
     word_reg = re.compile('[a-z]+')
     might_contain_allergans = defaultdict(set)
@@ -37,4 +39,3 @@ if __name__ == '__main__':
     filename = sys.argv[1] if len(sys.argv) > 1 else '21.txt'
     logging.basicConfig(level='WARN') # Set to INFO for debugging
     print(part_1(filename))
-
