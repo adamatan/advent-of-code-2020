@@ -1,5 +1,10 @@
-# Template for AOC 2020 solutions in Python.
-# Remember to change 'template.txt' to the right day number, e.g. '11.txt'
+'''
+Search and replace 'template' to adapt.
+
+Solution for Advent of Code 2020, Day template.
+https://adventofcode.com/2020/day/template
+Adam Matan <adam@matan.name>, 2021
+'''
 
 import sys
 import logging
