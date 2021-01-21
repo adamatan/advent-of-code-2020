@@ -7,14 +7,14 @@ def parse_ranges_line(line):
     >>> parse_ranges_line('row: 35-295 or 312-956')
     [(35, 295), (312, 956)]
     '''
-    reg = re.compile('(\d+)\-(\d+)')
+    reg = re.compile(r'(\d+)\-(\d+)')
     line_ranges = reg.findall(line)
     line_ranges = [tuple(map(int, t)) for t in line_ranges]
     return line_ranges
 
 def parse_ticket_line(line):
     '''
-    >>> parse_ticket_line('729,389,377')
+    >>> parse_ticket_line('729, 389, 377')
     [729, 389, 377]
     '''
     numbers = [int(i) for i in re.findall('\d+', line)]
