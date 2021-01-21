@@ -22,6 +22,7 @@ def part_1(filename):
     2046
     '''
     joltages = parse_input(filename)
+    # Add the outlet socket joltage (0) and the device joltage (max+3)
     sorted_joltages = [0] + sorted(joltages) + [max(joltages)+3]
     diffs = Counter()
     for i in range(1, len(sorted_joltages)):
