@@ -17,6 +17,8 @@ def parse_input(input_filename):
 def part_1(filename):
     '''
     >>> part_1('10-small.txt')
+    35
+    >>> part_1('10-medium.txt')
     220
     >>> part_1('10.txt')
     2046
