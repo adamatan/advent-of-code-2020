@@ -8,7 +8,6 @@ import re
 import sys
 import logging
 
-REQUIRED_FIELDS = {'hcl', 'hgt', 'byr', 'iyr', 'pid', 'eyr', 'ecl'}
 
 
 def parse_input(filename):
@@ -21,10 +20,23 @@ def parse_input(filename):
 
 
 def has_all_fields(passport):
+    """
+    >>> has_all_fields({'ecl': 'brn', \
+                        'pid': '737531770', \
+                        'iyr': '2010', \
+                        'eyr': '2020', \
+                        'byr': '1929', \
+                        'hgt': '189cm', \
+                        'hcl': '#c0946f'})
+    True
+    >>> has_all_fields({'ecl': 'brn', 'pid': '737531770', 'iyr': '2010', 'eyr': '2020'})
+    False
+    """
+    REQUIRED_FIELDS = {'hcl', 'hgt', 'byr', 'iyr', 'pid', 'eyr', 'ecl'}
     return REQUIRED_FIELDS.issubset(set(passport.keys()))
 
 def is_field_valid(field, value):
-    '''
+    """
     >>> is_field_valid('hcl', '#12345a')
     True
 
@@ -46,16 +58,16 @@ def is_field_valid(field, value):
     >>> is_field_valid('iyr', '2015')
     True
 
-    >>> is_field_valid('iyr', '2000')
-    False
+    >>> is_field_valid('iyr', '2000') == is_field_valid('iyr', '3000') == False
+    True
 
     >>> is_field_valid('eyr', '2021')
     True
 
     >>> is_field_valid('eyr', '2040')
     False
+    """
 
-    '''
     if field == 'hcl':
         return bool(re.match(r'#[0-9a-f]{6}', value))
     elif field == 'pid':
@@ -65,7 +77,9 @@ def is_field_valid(field, value):
     elif field == 'iyr':
         return 2010 <= int(value) <= 2020
     elif field == 'eyr':
-        return 2020 <= int(value) <= 2030
+        predicate = 2020 <= int(value) <= 2030
+        logging.warning(f'{field}, {value}, {predicate}')
+        return predicate
 
     return False
 
