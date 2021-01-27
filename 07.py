@@ -1,9 +1,11 @@
 import re
 from utils.utils import get_input_rows
 
-rows = get_input_rows(__file__)
-
 SHINY_GOLD = 'shiny gold'
+
+with open('07.txt') as f:
+    rows = f.readlines()
+
 
 reg = re.compile(r'''
     ([a-z][a-z\s]+?)        # Bag name
