@@ -21,8 +21,10 @@ def parse_input(filename):
 
 def part_1(filename):
     '''
-    #>>> part_1('12.txt')
-    #True
+    >>> part_1('12-small.txt')
+    25
+    >>> part_1('12.txt')
+    521
     '''
     directions = {
         'N': [0, 1],
@@ -39,21 +41,21 @@ def part_1(filename):
     ship_direction = 'E'
     location = [0, 0]
     for instruction in instructions:
-        logging.warning('Ship at %s', location)
+        logging.info('Ship at %s, instruction is %s', location, instruction)
         orientation, size = instruction
         if orientation in ('R', 'L'):
             while size > 0:
                 ship_direction = rotations[orientation][ship_direction]
                 size -= 90
-            logging.warning('New direction is %s', ship_direction)
-        
-        if orientation in directions:
-            move = [n*size for n in directions[orientation]]
+            logging.info('New direction is %s', ship_direction)
+        else:
+            ori = orientation if orientation in directions else ship_direction
+            move = [n*size for n in directions[ori]]
             location = list(map(sum, zip(location, move)))
-            logging.warning('Move is %s', move)
-
-        logging.warning(instruction)
-    return True
+            logging.info('Move is %s', move)
+    logging.info('Ship ended at %s', location)
+    manhattan_distance = abs(location[0]) + abs(location[1])
+    return manhattan_distance
 
 def part_2(filename):
     '''
@@ -64,7 +66,7 @@ def part_2(filename):
     return True
 
 if __name__ == '__main__':
-    filename = sys.argv[1] if len(sys.argv) > 1 else '12-small.txt'
+    filename = sys.argv[1] if len(sys.argv) > 1 else '12.txt'
     logging.basicConfig(level='WARN') # Set to INFO for debugging
     print(part_1(filename))
     print(part_2(filename))
