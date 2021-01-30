@@ -1,6 +1,6 @@
 .PHONY: check-% test-% test-verbose-% run-% lint-%
 
-check-%: lint-% test-% run-%
+check-%: run-% test-% lint-%
 	echo
 
 test-%:
