@@ -11,7 +11,7 @@ import logging
 
 def parse_input(filename):
     '''
-    >>> 'import sys' in parse_input('template.py')
+    >>> 'blah' in parse_input('template.txt')
     True
     '''
     with open(filename) as f:
@@ -34,7 +34,7 @@ def part_2(filename):
     return True
 
 if __name__ == '__main__':
-    filename = sys.argv[1] if len(sys.argv) > 1 else 'template.py'
+    filename = sys.argv[1] if len(sys.argv) > 1 else 'template.txt'
     logging.basicConfig(level='WARN') # Set to INFO for debugging
     print(part_1(filename))
     print(part_2(filename))
