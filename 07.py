@@ -6,13 +6,11 @@ SHINY_GOLD = 'shiny gold'
 with open('07.txt') as f:
     rows = f.readlines()
 
-
 reg = re.compile(r'''
     ([a-z][a-z\s]+?)        # Bag name
     \s                      # Space
     bag                     # the word bag (or bags) as a separator
-    ''',
-    re.VERBOSE)
+    ''', re.VERBOSE)
 
 bag_content = {}
 
@@ -34,4 +32,3 @@ def has_shiny_gold(bag_name):
 
 print(bag_content)
 print(sum([has_shiny_gold(bag) for bag in bag_content]))
-print(has_shiny_gold('dim violet'))
