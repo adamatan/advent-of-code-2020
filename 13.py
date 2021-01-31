@@ -40,7 +40,7 @@ def part_1(filename):
 
 def part_2(filename):
     '''
-    >>> part_2('template.txt')
+    >>> part_2('13-small.txt')
     True
     '''
     _ = get_input(filename)
