@@ -1,3 +1,9 @@
+'''
+Solution for Advent of Code 2020, Day 16.
+https://adventofcode.com/2020/day/16
+Adam Matan <adam@matan.name>, 2021
+'''
+
 import re
 import sys
 import fileinput
@@ -17,7 +23,7 @@ def parse_ticket_line(line):
     >>> parse_ticket_line('729, 389, 377')
     [729, 389, 377]
     '''
-    numbers = [int(i) for i in re.findall('\d+', line)]
+    numbers = [int(i) for i in re.findall(r'\d+', line)]
     return numbers
 
 def parse_input_file(filename):
@@ -29,7 +35,7 @@ def parse_input_file(filename):
             if 'or' in line:
                 line_ranges = parse_ranges_line(line)
                 ranges.extend(line_ranges)
-            elif re.match('^\d+', line):
+            elif re.match(r'^\d+', line):
                 if is_first_line:
                     is_first_line = False
                 else:

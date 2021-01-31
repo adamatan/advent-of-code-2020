@@ -1,3 +1,9 @@
+'''
+Solution for Advent of Code 2020, Day 25.
+https://adventofcode.com/2020/day/25
+Adam Matan <adam@matan.name>, 2021
+'''
+
 import sys
 import fileinput
 
@@ -14,7 +20,7 @@ def calculate_loop_size(public_key):
 
 def generate_encryption_key(loop_size, public_key):
     value = 1
-    for i in range(loop_size):
+    for _ in range(loop_size):
         value = (value * public_key) % DIVIDER
     return value
 

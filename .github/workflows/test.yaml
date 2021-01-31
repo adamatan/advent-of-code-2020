@@ -1,4 +1,4 @@
-name: Doctest all files
+name: Test and lint
 
 on: [push]
 
@@ -18,4 +18,7 @@ jobs:
         python-version: ${{ matrix.python-version }}
     - name: Test with doctest
       run: |
-        python -m doctest -v *.py
+        python -m doctest -v ??.py
+    - name: Lint with pylint
+      run: |
+        pylint --verbose --rcfile .pylintrc ??.py

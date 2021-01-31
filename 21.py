@@ -1,3 +1,9 @@
+'''
+Solution for Advent of Code 2020, Day 21.
+https://adventofcode.com/2020/day/21
+Adam Matan <adam@matan.name>, 2021
+'''
+
 import re
 import sys
 import fileinput
@@ -28,7 +34,6 @@ def part_1(filename):
                 else:
                     might_contain_allergans[allergan].update(ingredients)
                 logging.info(allergan, ingredients, might_contain_allergans[allergan])
-                
 
     logging.info(might_contain_allergans)
     suspicious_ingredients = set(itertools.chain.from_iterable(might_contain_allergans.values()))

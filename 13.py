@@ -43,6 +43,7 @@ def part_2(filename):
     >>> part_2('template.txt')
     True
     '''
+    _ = get_input(filename)
     return True
 
 if __name__ == '__main__':

@@ -1,3 +1,9 @@
+'''
+Solution for Advent of Code 2020, Day 14.
+https://adventofcode.com/2020/day/14
+Adam Matan <adam@matan.name>, 2021
+'''
+
 import re
 import sys
 import fileinput
@@ -5,7 +11,7 @@ import fileinput
 def parse_mask(mask):
     zero_mask = ''.join(['0' if c == '0' else '1' for c in mask])
     one_mask = ''.join(['1' if c == '1' else '0' for c in mask])
-    return int(zero_mask,2), int(one_mask, 2)
+    return int(zero_mask, 2), int(one_mask, 2)
 
 def apply_mask(mask, number):
     return (number & mask[0]) | mask[1]

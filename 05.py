@@ -49,7 +49,7 @@ def part_2():
         for col in range(first_column, last_column):
             if (row, col) not in seats:
                 return seat_id(row, col)
-    
+
     raise ValueError('No seat found')
 
 if __name__ == '__main__':
