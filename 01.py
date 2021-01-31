@@ -13,7 +13,7 @@ def get_input(filename):
     return expenses
 
 def part_1_naive(expenses):
-    '''O(N^2) soution
+    '''O(N^2) soution: Two nested loops
     >>> part_1_naive(get_input('01.txt'))
     955584
     >>> part_1_naive(get_input('01-small.txt'))
@@ -26,7 +26,7 @@ def part_1_naive(expenses):
     raise ValueError('No match found')
 
 def part_1_sets(expenses):
-    '''O(N^2) soution
+    '''O(N) soution: Convert the list to a set and iterate it.
     >>> part_1_sets(get_input('01.txt')) == part_1_naive(get_input('01.txt'))
     True
     >>> part_1_sets(get_input('01-small.txt')) == part_1_naive(get_input('01-small.txt'))
