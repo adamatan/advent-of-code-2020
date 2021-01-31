@@ -32,6 +32,7 @@ def part_1(filename):
         'E': [1, 0],
         'W': [-1, 0]
     }
+
     rotations = {
         'R': {'N': 'E', 'E': 'S', 'S': 'W', 'W': 'N'},
         'L': {'N': 'W', 'W': 'S', 'S': 'E', 'E': 'N'}
@@ -40,19 +41,20 @@ def part_1(filename):
     instructions = parse_input(filename)
     ship_direction = 'E'
     location = [0, 0]
+
     for instruction in instructions:
         logging.info('Ship at %s, instruction is %s', location, instruction)
-        orientation, size = instruction
-        if orientation in ('R', 'L'):
+        letter_code, size = instruction # e.g. ('E', 70) or ('F', 100)
+        if letter_code in ('R', 'L'):
             while size > 0:
-                ship_direction = rotations[orientation][ship_direction]
+                ship_direction = rotations[letter_code][ship_direction]
                 size -= 90
             logging.info('New direction is %s', ship_direction)
         else:
-            ori = orientation if orientation in directions else ship_direction
-            move = [n*size for n in directions[ori]]
-            location = list(map(sum, zip(location, move)))
+            orientation = letter_code if letter_code in directions else ship_direction
+            move = [n*size for n in directions[orientation]]
             logging.info('Move is %s', move)
+            location = list(map(sum, zip(location, move)))
     logging.info('Ship ended at %s', location)
     manhattan_distance = abs(location[0]) + abs(location[1])
     return manhattan_distance
