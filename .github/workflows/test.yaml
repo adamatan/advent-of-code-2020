@@ -21,4 +21,4 @@ jobs:
         python -m doctest -v ??.py
     - name: Lint with pylint
       run: |
-        pylint --verbose --rcfile .pylintrc ??.py
+        pip3 install pylint && pylint --verbose --rcfile .pylintrc ??.py
