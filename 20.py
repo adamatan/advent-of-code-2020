@@ -37,19 +37,18 @@ def part_1(filename):
     # True
     '''
     tiles = parse_input(filename)
-    borders = Counter()
-    for tile in tiles.values():
-        borders.update(tile)
-    print(borders)
-    answer = []
-    for number, tile_borders in tiles.items():
-        for tile_border in tile_borders:
-            if borders[tile_border] == 1:
-                answer.append(number)
-                break
-    print(answer)
+    all_borders = Counter()
+    for tile, tile_borders in tiles.items():
+        all_borders.update(tile_borders)
+        # logging.warning(f'{tile} {tile_borders}')
+    for border in ['.#####..#.', '..###..###', '..##.#..#.', '...#.##..#']:
+        logging.warning(f'{border} {all_borders[border]}')
+        for tile in tiles:
+            if border in tiles[tile]:
+                logging.warning(f'{tile} {border}')
 
-    return True
+    logging.warning(tiles[3079]) # #..##.#...
+    logging.warning(tiles[2311])
 
 def part_2(filename):
     '''
